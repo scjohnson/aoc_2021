@@ -23,13 +23,12 @@ def process(instruction, pos, depth):
 
 if __name__ == "__main__":
 
-    instruction = [i for i in open("input_02.txt")]
     pos, depth = 0, 0
-    for ins in instruction:
+    for ins in open("input_02.txt"):
         pos, depth = process(ins, pos, depth)
     print(pos*depth)  # 2027977
 
     pos, depth, aim = 0, 0, 0
-    for ins in instruction:
+    for ins in open("input_02.txt"):
         pos, depth, aim = process2(ins, pos, depth, aim)
     print(pos*depth)  # 1903644897
