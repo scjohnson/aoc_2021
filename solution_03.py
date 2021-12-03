@@ -2,7 +2,7 @@ import numpy as np
 import operator
 
 
-def average(instructions):
+def most_common(instructions):
     values = np.zeros(len(instructions[0]))
     for ins in instructions:
         values += np.array([int(c) for c in ins.strip()])
@@ -13,11 +13,9 @@ def xo2_filter(consider, index, comparator):
     if len(consider) == 1:
         return consider
 
-    values = average(consider)
-    new_consider = []
-    for c in consider:
-        if comparator(values[index], c[index]):
-            new_consider.append(c)
+    values = most_common(consider)
+    new_consider = list(filter(lambda c: comparator(values[index], c[index]), consider))
+
     return xo2_filter(new_consider, index+1, comparator)
 
 
@@ -28,7 +26,7 @@ def xo2_rating(file_name, comparator):
 
 
 def part1(file_name):
-    binary = average([ins.strip() for ins in open(file_name)])
+    binary = most_common([ins.strip() for ins in open(file_name)])
     second_binary = ''.join(['1' if i == '0' else '0'
                              for i in binary])
 
