@@ -14,7 +14,8 @@ def xo2_filter(consider, index, comparator):
         return consider
 
     values = most_common(consider)
-    new_consider = list(filter(lambda c: comparator(values[index], c[index]), consider))
+    new_consider = list(
+        filter(lambda c: comparator(values[index], c[index]), consider))
 
     return xo2_filter(new_consider, index+1, comparator)
 
