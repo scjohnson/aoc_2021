@@ -4,19 +4,13 @@ import numpy as np
 def part2(ages):
     hist = np.histogram(ages, bins=7, range=(0, 7))[0]
     i = 0
-    new_kids = 0
-    new_new_kids = 0
-    new_new_new_kids = 0
-    #new_kids = np.zeros(3)
-    for d in range(256):
-        hist[i-1] += new_kids
-        new_kids = new_new_kids
-        new_new_kids = new_new_new_kids
-        new_new_new_kids = hist[i]
-        i = i + 1
-        if i == 7:
-            i = 0
-    return np.sum(hist) + new_kids + new_new_kids + new_new_new_kids
+    new_kids = np.zeros(3)
+    for _ in range(256):
+        hist[i-1] += new_kids[2]
+        new_kids[1:] = new_kids[:-1]
+        new_kids[0] = hist[i]
+        i = (i+1) % 7
+    return int(np.sum(hist) + np.sum(new_kids))
 
 
 def part1(ages):
