@@ -21,7 +21,7 @@ def call_number(number, boards):
     return boards
 
 
-def part1(input_file):
+def solution(input_file):
     numbers, boards = parse(input_file)
     part1 = False
 
@@ -42,5 +42,5 @@ def part1(input_file):
 
 
 if __name__ == "__main__":
-    print("test solution: ", part1("test_04.txt"))
-    print("solution: ", part1("input_04.txt"))
+    print("test solution: ", solution("test_04.txt"))
+    print("solution: ", solution("input_04.txt"))
