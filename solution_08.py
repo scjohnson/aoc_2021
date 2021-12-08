@@ -1,5 +1,3 @@
-import numpy as np
-
 
 def unique(chars):
     if len(chars) in [2, 4, 3, 7]:
@@ -33,8 +31,7 @@ def decode(encoded):
                 decoder[e] = '9'
             else:
                 decoder[e] = '0'
-    for e in enco:
-        if len(e) == 5 and e not in decoder:
+        elif len(e) == 5 and e not in decoder:
             if sum([i in e for i in four]) == 3:
                 decoder[e] = '5'
             else:
