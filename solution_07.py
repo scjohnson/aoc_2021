@@ -10,7 +10,7 @@ if __name__ == "__main__":
     def fun(x): return np.sum(np.abs(locations-x))
     res = minimize(fun, np.ones(1, dtype=np.int))
     print(min(fun(math.floor(res.x)), fun(math.ceil(res.x))))
-    
+
     def fun(x): return np.sum((np.abs(locations-x)+1)*np.abs(locations-x)/2)
     res = minimize(fun, np.ones(1, dtype=np.int))
     print(min(fun(math.floor(res.x)), fun(math.ceil(res.x))))
